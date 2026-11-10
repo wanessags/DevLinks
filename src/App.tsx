@@ -12,7 +12,6 @@ export default function App() {
     <main className="app">
       <div className="container">
         <Profile />
-
         <ThemeToggle />
 
         <section className="links" aria-label="Meus links">
@@ -22,7 +21,6 @@ export default function App() {
         </section>
 
         <SocialLinks />
-
         <Footer />
       </div>
     </main>

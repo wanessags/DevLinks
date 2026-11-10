@@ -1,71 +1,104 @@
-# AGENTS.md — Instruções para IA
+# AGENTS.md — DevLinks
 
 ## Objetivo
 
-Desenvolver o projeto DevLinks utilizando React e Vite 8, respeitando integralmente o arquivo SPEC.md e a referência visual do Figma.
+Desenvolver o DevLinks utilizando React,
+TypeScript e Vite 8, seguindo o Figma
+e os requisitos documentados em SPEC.md.
 
 ## Regras obrigatórias
 
-1. Utilizar React com JavaScript e JSX.
-2. Manter o Vite na versão principal 8.
-3. Seguir os requisitos documentados em SPEC.md.
-4. Criar componentes pequenos e reutilizáveis.
-5. Utilizar Props para passar dados aos componentes.
-6. Utilizar map() para renderizar listas de links.
-7. Utilizar useState para controlar a alternância de tema.
-8. Persistir o tema utilizando localStorage.
-9. Desenvolver uma interface responsiva.
-10. Garantir acessibilidade.
-11. Não remover funcionalidades existentes.
-12. Evitar bibliotecas desnecessárias.
-13. Manter organização e legibilidade do código.
+1. Utilizar React com TypeScript.
+2. Criar componentes React em arquivos .tsx.
+3. Criar arquivos de dados TypeScript em .ts.
+4. Manter Vite na versão principal 8.
+5. Consultar SPEC.md antes de cada alteração.
+6. Atualizar SPEC.md após cada etapa.
+7. Utilizar Props tipadas.
+8. Utilizar map() para renderizar listas.
+9. Utilizar useState no controle do tema.
+10. Utilizar localStorage para persistência do tema.
+11. Implementar responsividade.
+12. Garantir acessibilidade.
+13. Preservar funcionalidades existentes.
+14. Não adicionar dependências desnecessárias.
+15. Não utilizar any sem justificativa técnica.
+16. Não inserir credenciais no código.
 
-## Estrutura sugerida
+## Design
+
+- Seguir o Figma disponibilizado pelo professor.
+- Manter a foto real do perfil.
+- Utilizar React Icons para redes sociais.
+- Implementar modos claro e escuro.
+- Garantir uma experiência adequada no mobile.
+- Evitar mudanças visuais fora do escopo.
+
+## Estrutura
 
 src/
-assets/
 components/
-Profile.jsx
-ThemeToggle.jsx
-LinkButton.jsx
-SocialLinks.jsx
-Footer.jsx
+Profile.tsx
+ThemeToggle.tsx
+LinkButton.tsx
+SocialLinks.tsx
+Footer.tsx
 data/
-links.js
-App.jsx
+links.ts
+App.tsx
 App.css
 index.css
-main.jsx
+main.tsx
 
-## Processo de desenvolvimento
+## Fluxo de desenvolvimento
 
-1. Consultar SPEC.md antes de implementar funcionalidades.
-2. Consultar a documentação atualizada quando necessário.
-3. Criar inicialmente a interface estática.
-4. Implementar as funcionalidades gradualmente.
-5. Validar as alterações.
-6. Executar os testes.
-7. Corrigir os erros encontrados.
-8. Registrar as alterações em commits organizados.
+1. Analisar SPEC.md.
+2. Identificar os arquivos envolvidos.
+3. Preservar o comportamento existente.
+4. Implementar a alteração.
+5. Atualizar SPEC.md.
+6. Executar typecheck.
+7. Executar lint.
+8. Executar build.
+9. Corrigir erros.
+10. Fazer commit por etapa validada.
 
-## Qualidade
+## Comandos de validação
 
-- Não introduzir erros de compilação.
-- Evitar código duplicado.
-- Utilizar nomes claros para funções e variáveis.
-- Garantir funcionamento em telas pequenas.
-- Respeitar os estados de foco e interação.
-- Não adicionar credenciais ou informações sensíveis ao repositório.
-
-## Validação
-
-Antes de considerar uma etapa concluída, executar:
-
-npm run build
+npm run typecheck
 npm run lint
+npm run build
 
-Quando os testes Playwright estiverem configurados, executá-los também.
+## Git
+
+Utilizar commits descritivos.
+
+Não realizar commit de código com falhas
+de compilação ou validação.
+
+Não adicionar node_modules, dist ou
+arquivos com credenciais ao repositório.
+
+## Testes
+
+Utilizar Playwright para os testes de interface
+quando a configuração estiver disponível.
+
+Validar:
+
+- Perfil.
+- Links.
+- Redes sociais.
+- Modo claro e escuro.
+- Persistência do tema.
+- Responsividade.
+- Acessibilidade.
 
 ## Documentação
 
-Manter o README.md atualizado com instruções de instalação, execução, testes e funcionalidades.
+Atualizar SPEC.md obrigatoriamente em cada etapa.
+
+Manter README.md atualizado conforme o progresso.
+
+Documentar funcionalidades pendentes sem
+declará-las concluídas antecipadamente.

@@ -1,4 +1,9 @@
-export const links = [
+export interface DevLink {
+  id: number;
+  title: string;
+}
+
+export const links: DevLink[] = [
   {
     id: 1,
     title: "Inscreva-se no Curso",
