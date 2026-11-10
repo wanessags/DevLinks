@@ -3,13 +3,12 @@
 ## 1. Visão geral
 
 O DevLinks é uma aplicação web desenvolvida com React,
-TypeScript e Vite 8.
+TypeScript e Vite 8, destinada a reunir informações
+de perfil, links importantes e redes sociais em uma
+única página.
 
-A aplicação reúne um perfil pessoal, links importantes
-e redes sociais em uma página responsiva.
-
-O objetivo é reproduzir a interface disponibilizada
-no Figma pelo professor.
+O projeto deve reproduzir o design do Figma
+disponibilizado pelo professor.
 
 ## 2. Tecnologias
 
@@ -21,36 +20,34 @@ no Figma pelo professor.
 - Node.js 24
 - npm
 - React Icons 5.7.0
-- Git e GitHub
 - ESLint
+- Git e GitHub
 - Playwright (planejado)
 
 ## 3. Requisitos funcionais
 
 ### RF01 — Perfil
 
-Exibir:
+Exibir a foto real do usuário e seu nome de perfil.
 
-- Foto real do usuário.
-- Nome de usuário.
-- Avatar circular.
+- Avatar circular
+- Foto em public/images/perfil.jpg
+- Nome de usuário personalizável
 
-Imagem esperada:
-public/images/perfil.jpg
+Status: componente implementado.
+Validação da foto real pendente.
 
-Status: implementado em código; validação da imagem pendente.
-
-### RF02 — Lista de links
+### RF02 — Links
 
 Exibir quatro botões configuráveis.
 
-Requisitos técnicos:
+- Componentes reutilizáveis
+- Props tipadas
+- Renderização com map()
+- Abertura de URLs externas
 
-- Utilizar componentes reutilizáveis.
-- Utilizar Props tipadas com TypeScript.
-- Renderizar utilizando map().
-
-Status: estrutura implementada; navegação pendente.
+Status: renderização implementada.
+URLs externas pendentes.
 
 ### RF03 — Redes sociais
 
@@ -61,52 +58,77 @@ Exibir ícones de:
 - YouTube
 - LinkedIn
 
-Biblioteca: React Icons.
+Utilizar React Icons.
 
-Status: ícones implementados; links externos pendentes.
+Status: ícones implementados.
+Links externos pendentes.
 
 ### RF04 — Alternância de tema
 
-Permitir alternar entre tema claro e escuro.
+Permitir alternar entre modo claro e escuro.
 
-Implementação prevista:
+Implementação:
 
-- useState
-- Eventos React
-- Classes CSS ou atributos de tema
+- useState para controlar o tema
+- Evento onClick
+- Componente ThemeToggle
+- Props tipadas
+- Atributo data-theme
+- Ícones de sol e lua
+- Controle acessível via teclado
 
-Status: pendente.
+Status: implementação proposta.
+Validação funcional pendente.
 
 ### RF05 — Persistência do tema
 
-Salvar a escolha do usuário utilizando localStorage.
+Salvar a preferência no localStorage.
 
-O tema deve permanecer após atualizar a página.
+Chave:
+devlinks-theme
 
-Status: pendente.
+Valores:
+
+- light
+- dark
+
+Comportamento:
+
+- Ao iniciar, recuperar o tema salvo.
+- Se não existir preferência válida, iniciar no escuro.
+- Ao alternar, atualizar o localStorage.
+- Após recarregar, preservar o tema escolhido.
+- Se o localStorage não estiver disponível,
+  permitir a alternância durante a sessão.
+
+Status: implementação proposta.
+Teste de persistência pendente.
 
 ### RF06 — Responsividade
 
-Adaptar a interface para:
+Adaptar o layout para:
 
 - Mobile
 - Tablet
 - Desktop
 
-Status: CSS responsivo inicial; validação pendente.
+Status: CSS responsivo implementado.
+Comparação visual com o Figma pendente.
 
 ### RF07 — Acessibilidade
 
 Requisitos:
 
-- HTML semântico.
-- Descrições acessíveis.
-- Navegação por teclado.
-- Foco visível.
-- Contraste adequado.
-- Identificação de controles interativos.
+- HTML semântico
+- Textos alternativos
+- Props e controles acessíveis
+- Navegação por teclado
+- Foco visível
+- Contraste adequado
+- Respeito a prefers-reduced-motion
 
 Status: parcialmente implementado.
+Auditoria e testes pendentes.
 
 ## 4. Componentes
 
@@ -147,16 +169,41 @@ package.json
 
 - Manter Vite 8.
 - Utilizar React com TypeScript.
-- Utilizar tipagem explícita em Props.
-- Não adicionar novas funcionalidades em JavaScript/JSX.
-- Utilizar map() para renderização de listas.
+- Não criar novos componentes em JSX.
+- Tipar as Props.
+- Utilizar map() na lista de links.
 - Utilizar useState na alternância de temas.
 - Persistir o tema no localStorage.
-- Preservar funcionalidades existentes.
+- Preservar os componentes existentes.
 - Garantir acessibilidade.
-- Seguir a referência visual do Figma.
+- Seguir o Figma.
 
-## 7. Validações
+## 7. Critérios de aceitação do tema
+
+CA01:
+A aplicação inicia em modo escuro quando
+não existe preferência salva.
+
+CA02:
+Ao clicar no seletor, o tema alterna.
+
+CA03:
+A aparência dos botões, textos, ícones e
+fundo acompanha o tema selecionado.
+
+CA04:
+A escolha permanece após atualizar a página.
+
+CA05:
+O seletor funciona por teclado.
+
+CA06:
+A aplicação permanece responsiva.
+
+CA07:
+A foto e os componentes existentes são preservados.
+
+## 8. Testes
 
 Comandos obrigatórios:
 
@@ -166,71 +213,83 @@ npm run build
 
 Testes planejados com Playwright:
 
-- Renderização do perfil.
-- Exibição dos quatro botões.
-- Funcionamento dos links externos.
-- Alternância de tema.
-- Persistência do tema.
-- Responsividade.
-- Navegação por teclado.
+- Renderização do perfil
+- Exibição dos quatro links
+- Links externos
+- Alternância do tema
+- Persistência no localStorage
+- Responsividade
+- Acessibilidade básica
 
-## 8. Histórico de desenvolvimento
+## 9. Histórico de desenvolvimento
 
-### Etapa 02 — Configuração
+### Etapa 02 — Inicialização
 
-- Criação do React com Vite 8.
-- Instalação de dependências.
+- React com Vite 8
+- Instalação inicial
+- Configuração do Git
 
 ### Etapa 03 — Documentação
 
-- Criação do AGENTS.md.
-- Criação do SPEC.md.
+- AGENTS.md
+- SPEC.md
 
 ### Etapa 04 — Interface estática
 
-- Componentes iniciais.
-- Layout escuro.
-- Quatro botões com map().
+- Componentes reutilizáveis
+- Lista com map()
+- Layout escuro inicial
 
-### Etapa 05 — Perfil e redes sociais
+### Etapa 05 — Perfil e ícones
 
-- React Icons.
-- Avatar com imagem personalizada.
-- Ícones de redes sociais.
-- Ajustes visuais.
+- React Icons
+- Avatar personalizado
+- Ícones das redes sociais
+- Ajustes de layout
 
 ### Etapa 06 — Migração TypeScript
 
-- Instalação do TypeScript 5.9.3.
-- Instalação do typescript-eslint.
-- Conversão de JSX para TSX.
-- Conversão dos dados JS para TS.
-- Tipagem das propriedades.
-- Configuração do tsconfig.json.
-- Configuração do ESLint.
-- Atualização da documentação.
+- TypeScript 5.9.3
+- Arquivos TSX e TS
+- Tipagem das Props
+- Configuração do ESLint
+- Configuração do tsconfig.json
+- Build aprovado
+- Commit ac78379 criado
 
-Status: implementação proposta; validação pendente.
+### Etapa 07 — Temas
 
-## 9. Próximas implementações
+Alterações propostas:
 
-1. Validar migração para TypeScript.
-2. Configurar links externos reais.
-3. Implementar o tema claro e escuro.
-4. Persistir a escolha no localStorage.
-5. Ajustar o layout conforme Figma.
-6. Implementar testes Playwright.
+- Alternância com useState
+- Persistência com localStorage
+- ThemeToggle acessível
+- Estilos de modo claro e escuro
+- Ajustes responsivos
+- Preferência de movimento reduzido
+
+Status: testes e commit pendentes.
+
+## 10. Próximas etapas
+
+1. Validar os temas claro e escuro.
+2. Implementar URLs externas dos botões.
+3. Configurar redes sociais reais.
+4. Comparar visualmente com o Figma.
+5. Implementar Playwright.
+6. Revisar acessibilidade.
 7. Atualizar README.
 8. Finalizar a entrega.
 
-## 10. Critérios de aceitação
+## 11. Critérios de conclusão
 
 O projeto estará concluído quando:
 
-- Todos os requisitos funcionais estiverem implementados.
+- Os requisitos funcionais estiverem implementados.
 - A interface estiver fiel ao Figma.
-- O projeto utilizar React e TypeScript.
-- O Vite permanecer na versão 8.
-- O build e lint passarem.
-- Os testes automatizados passarem.
+- Os links funcionarem corretamente.
+- Os temas claro e escuro funcionarem.
+- A persistência do tema funcionar.
+- O layout estiver responsivo.
+- Os testes estiverem aprovados.
 - O GitHub estiver atualizado.
