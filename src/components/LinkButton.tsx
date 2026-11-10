@@ -1,11 +1,18 @@
 interface LinkButtonProps {
   title: string;
+  url: string;
 }
 
-export default function LinkButton({ title }: LinkButtonProps) {
+export default function LinkButton({ title, url }: LinkButtonProps) {
   return (
-    <button className="link-button" type="button">
+    <a
+      className="link-button"
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${title} (abre em uma nova aba)`}
+    >
       {title}
-    </button>
+    </a>
   );
 }

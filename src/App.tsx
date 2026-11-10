@@ -22,8 +22,8 @@ function getInitialTheme(): Theme {
       return savedTheme;
     }
   } catch {
-    // Mantém o tema padrão se o armazenamento
-    // do navegador estiver indisponível.
+    // Mantém o tema padrão caso o
+    // armazenamento não esteja disponível.
   }
 
   return "dark";
@@ -36,8 +36,8 @@ export default function App() {
     try {
       localStorage.setItem(THEME_STORAGE_KEY, theme);
     } catch {
-      // A alternância continua funcionando
-      // mesmo sem acesso ao localStorage.
+      // A troca de tema continua funcionando
+      // mesmo sem persistência.
     }
   }, [theme]);
 
@@ -54,7 +54,7 @@ export default function App() {
 
         <section className="links" aria-label="Meus links">
           {links.map((link) => (
-            <LinkButton key={link.id} title={link.title} />
+            <LinkButton key={link.id} title={link.title} url={link.url} />
           ))}
         </section>
 

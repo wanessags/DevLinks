@@ -2,24 +2,21 @@
 
 ## 1. Visão geral
 
-O DevLinks é uma aplicação web desenvolvida com React,
-TypeScript e Vite 8, destinada a reunir informações
-de perfil, links importantes e redes sociais em uma
-única página.
+O DevLinks é uma aplicação de página única para reunir
+links importantes, redes sociais e informações pessoais.
 
-O projeto deve reproduzir o design do Figma
-disponibilizado pelo professor.
+O projeto deve seguir o Figma disponibilizado pelo
+professor e utilizar React, TypeScript e Vite 8.
 
 ## 2. Tecnologias
 
 - React
 - TypeScript 5.9.3
 - Vite 8
-- HTML5
 - CSS3
+- React Icons 5.7.0
 - Node.js 24
 - npm
-- React Icons 5.7.0
 - ESLint
 - Git e GitHub
 - Playwright (planejado)
@@ -28,107 +25,83 @@ disponibilizado pelo professor.
 
 ### RF01 — Perfil
 
-Exibir a foto real do usuário e seu nome de perfil.
+Exibir foto real e nome do usuário.
 
+- Foto: public/images/perfil.jpg
 - Avatar circular
-- Foto em public/images/perfil.jpg
-- Nome de usuário personalizável
+- Nome de usuário configurável
 
 Status: componente implementado.
-Validação da foto real pendente.
+Confirmação da foto real pendente.
 
-### RF02 — Links
+### RF02 — Lista de links
 
-Exibir quatro botões configuráveis.
+Exibir quatro links externos configuráveis.
 
-- Componentes reutilizáveis
-- Props tipadas
-- Renderização com map()
-- Abertura de URLs externas
+- Utilizar componente LinkButton.
+- Utilizar Props tipadas.
+- Renderizar com map().
+- Abrir links em novas abas.
+- Utilizar rel="noopener noreferrer".
+- Manter os estilos do Figma.
 
-Status: renderização implementada.
-URLs externas pendentes.
+Status: implementação proposta.
+Testes funcionais pendentes.
 
 ### RF03 — Redes sociais
 
-Exibir ícones de:
+Exibir GitHub, Instagram, YouTube e LinkedIn.
 
-- GitHub
-- Instagram
-- YouTube
-- LinkedIn
+- Utilizar React Icons.
+- Permitir navegação por links externos.
+- Utilizar nomes acessíveis.
+- Abrir em novas abas.
 
-Utilizar React Icons.
-
-Status: ícones implementados.
-Links externos pendentes.
-
-### RF04 — Alternância de tema
-
-Permitir alternar entre modo claro e escuro.
-
-Implementação:
-
-- useState para controlar o tema
-- Evento onClick
-- Componente ThemeToggle
-- Props tipadas
-- Atributo data-theme
-- Ícones de sol e lua
-- Controle acessível via teclado
+O GitHub aponta para github.com/wanessags.
+Os outros ícones utilizam as páginas iniciais
+das plataformas até serem configurados os perfis reais.
 
 Status: implementação proposta.
-Validação funcional pendente.
+Personalização pendente.
+
+### RF04 — Tema claro e escuro
+
+- Utilizar useState.
+- Alternar pelo componente ThemeToggle.
+- Utilizar data-theme.
+- Garantir uso por teclado.
+
+Status: implementado e validado pelo usuário.
 
 ### RF05 — Persistência do tema
 
 Salvar a preferência no localStorage.
 
-Chave:
-devlinks-theme
+Chave: devlinks-theme
+Valores: light e dark
+Padrão: dark
 
-Valores:
-
-- light
-- dark
-
-Comportamento:
-
-- Ao iniciar, recuperar o tema salvo.
-- Se não existir preferência válida, iniciar no escuro.
-- Ao alternar, atualizar o localStorage.
-- Após recarregar, preservar o tema escolhido.
-- Se o localStorage não estiver disponível,
-  permitir a alternância durante a sessão.
-
-Status: implementação proposta.
-Teste de persistência pendente.
+Status: implementado e validado pelo usuário.
 
 ### RF06 — Responsividade
 
-Adaptar o layout para:
+Suportar mobile, tablet e desktop.
 
-- Mobile
-- Tablet
-- Desktop
-
-Status: CSS responsivo implementado.
-Comparação visual com o Figma pendente.
+Status: CSS responsivo inicial.
+Comparação com Figma pendente.
 
 ### RF07 — Acessibilidade
 
-Requisitos:
+- HTML semântico.
+- Texto alternativo para imagens.
+- Rótulos acessíveis.
+- Navegação por teclado.
+- Foco visível.
+- Contraste adequado.
+- Respeito a prefers-reduced-motion.
 
-- HTML semântico
-- Textos alternativos
-- Props e controles acessíveis
-- Navegação por teclado
-- Foco visível
-- Contraste adequado
-- Respeito a prefers-reduced-motion
-
-Status: parcialmente implementado.
-Auditoria e testes pendentes.
+Status: implementação parcial.
+Auditoria pendente.
 
 ## 4. Componentes
 
@@ -138,14 +111,13 @@ Auditoria e testes pendentes.
 - SocialLinks.tsx
 - Footer.tsx
 
-## 5. Estrutura do projeto
+## 5. Estrutura
 
 DevLinks/
 public/
 images/
 perfil.jpg
 src/
-assets/
 components/
 Profile.tsx
 ThemeToggle.tsx
@@ -165,131 +137,121 @@ eslint.config.js
 index.html
 package.json
 
-## 6. Requisitos técnicos
+## 6. Regras técnicas
 
-- Manter Vite 8.
-- Utilizar React com TypeScript.
-- Não criar novos componentes em JSX.
-- Tipar as Props.
-- Utilizar map() na lista de links.
-- Utilizar useState na alternância de temas.
+- Manter React com TypeScript e Vite 8.
+- Tipar todas as Props.
+- Utilizar map() para listas.
+- Utilizar useState para interações.
 - Persistir o tema no localStorage.
-- Preservar os componentes existentes.
-- Garantir acessibilidade.
-- Seguir o Figma.
+- Não remover funcionalidades existentes.
+- Preservar o design e a acessibilidade.
+- Atualizar SPEC.md em cada etapa.
+- Fazer commit após validação.
 
-## 7. Critérios de aceitação do tema
+## 7. Histórico de desenvolvimento
 
-CA01:
-A aplicação inicia em modo escuro quando
-não existe preferência salva.
+### Etapa 02 — Configuração
 
-CA02:
-Ao clicar no seletor, o tema alterna.
+- React e Vite 8.
+- Configuração inicial do repositório.
 
-CA03:
-A aparência dos botões, textos, ícones e
-fundo acompanha o tema selecionado.
+### Etapa 03 — Documentação
 
-CA04:
-A escolha permanece após atualizar a página.
+- AGENTS.md.
+- SPEC.md.
 
-CA05:
-O seletor funciona por teclado.
+### Etapa 04 — Interface estática
 
-CA06:
-A aplicação permanece responsiva.
+- Componentes reutilizáveis.
+- Layout inicial.
+- Lista de links.
 
-CA07:
-A foto e os componentes existentes são preservados.
+### Etapa 05 — Perfil e ícones
 
-## 8. Testes
+- Foto de perfil personalizada em código.
+- React Icons.
+- Ícones sociais.
 
-Comandos obrigatórios:
+### Etapa 06 — TypeScript
+
+- Migração de JSX para TSX.
+- Migração de JS para TS.
+- Tipagem de Props.
+- Configuração do ESLint.
+- Build aprovado.
+- Commit ac78379.
+
+### Etapa 07 — Temas
+
+- Modo claro e escuro.
+- useState.
+- localStorage.
+- Estilização de temas.
+
+Status: validado pelo usuário.
+
+### Etapa 08 — Links funcionais
+
+Alterações propostas:
+
+- URLs tipadas em links.ts.
+- Links externos no LinkButton.
+- Links externos em SocialLinks.
+- Estados de hover e foco.
+- Atualização da documentação.
+
+Status: testes e commit pendentes.
+
+## 8. Critérios de aceitação da etapa 08
+
+- Quatro botões aparecem.
+- Cada botão abre o endereço configurado.
+- Os ícones sociais são clicáveis.
+- Links externos abrem em novas abas.
+- A navegação por teclado funciona.
+- Os dois temas continuam funcionando.
+- O tema permanece após recarregamento.
+- O layout permanece responsivo.
+- Typecheck, lint e build passam.
+
+## 9. Testes
+
+Comandos:
 
 npm run typecheck
 npm run lint
 npm run build
 
-Testes planejados com Playwright:
+Testes Playwright planejados:
 
-- Renderização do perfil
-- Exibição dos quatro links
+- Perfil
 - Links externos
-- Alternância do tema
-- Persistência no localStorage
+- Redes sociais
+- Temas
+- Persistência do tema
 - Responsividade
-- Acessibilidade básica
-
-## 9. Histórico de desenvolvimento
-
-### Etapa 02 — Inicialização
-
-- React com Vite 8
-- Instalação inicial
-- Configuração do Git
-
-### Etapa 03 — Documentação
-
-- AGENTS.md
-- SPEC.md
-
-### Etapa 04 — Interface estática
-
-- Componentes reutilizáveis
-- Lista com map()
-- Layout escuro inicial
-
-### Etapa 05 — Perfil e ícones
-
-- React Icons
-- Avatar personalizado
-- Ícones das redes sociais
-- Ajustes de layout
-
-### Etapa 06 — Migração TypeScript
-
-- TypeScript 5.9.3
-- Arquivos TSX e TS
-- Tipagem das Props
-- Configuração do ESLint
-- Configuração do tsconfig.json
-- Build aprovado
-- Commit ac78379 criado
-
-### Etapa 07 — Temas
-
-Alterações propostas:
-
-- Alternância com useState
-- Persistência com localStorage
-- ThemeToggle acessível
-- Estilos de modo claro e escuro
-- Ajustes responsivos
-- Preferência de movimento reduzido
-
-Status: testes e commit pendentes.
+- Navegação por teclado
 
 ## 10. Próximas etapas
 
-1. Validar os temas claro e escuro.
-2. Implementar URLs externas dos botões.
-3. Configurar redes sociais reais.
-4. Comparar visualmente com o Figma.
-5. Implementar Playwright.
-6. Revisar acessibilidade.
-7. Atualizar README.
-8. Finalizar a entrega.
+1. Validar os links externos.
+2. Personalizar URLs e informações do perfil.
+3. Comparar a interface com o Figma.
+4. Implementar Playwright.
+5. Revisar acessibilidade.
+6. Atualizar README.
+7. Finalizar a entrega.
 
 ## 11. Critérios de conclusão
 
-O projeto estará concluído quando:
+O DevLinks estará concluído quando:
 
-- Os requisitos funcionais estiverem implementados.
-- A interface estiver fiel ao Figma.
-- Os links funcionarem corretamente.
-- Os temas claro e escuro funcionarem.
-- A persistência do tema funcionar.
-- O layout estiver responsivo.
+- Todos os requisitos estiverem implementados.
+- A interface corresponder ao Figma.
+- Os links funcionarem.
+- Os temas funcionarem e persistirem.
+- A responsividade estiver validada.
 - Os testes estiverem aprovados.
-- O GitHub estiver atualizado.
+- A documentação estiver atualizada.
+- O código estiver publicado no GitHub.
