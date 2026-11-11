@@ -27,17 +27,29 @@ test("02 - Deve exibir os quatro links", async ({ page }) => {
 });
 
 test("03 - Deve exibir as redes sociais", async ({ page }) => {
-  const socialLinks = page.locator(".social-links a");
+  const socialLinks = page.getByRole("navigation", {
+    name: "Redes sociais",
+  });
 
-  await expect(socialLinks).toHaveCount(4);
+  await expect(socialLinks).toBeVisible();
 
-  await expect(page.getByRole("link", { name: /GitHub/i })).toBeVisible();
+  await expect(socialLinks.getByRole("link")).toHaveCount(4);
 
-  await expect(page.getByRole("link", { name: /Instagram/i })).toBeVisible();
+  const networks = ["GitHub", "Instagram", "YouTube", "LinkedIn"];
 
-  await expect(page.getByRole("link", { name: /YouTube/i })).toBeVisible();
+  for (const network of networks) {
+    const socialLink = socialLinks.getByRole("link", {
+      name: new RegExp(`^${network} \\(`),
+    });
 
-  await expect(page.getByRole("link", { name: /LinkedIn/i })).toBeVisible();
+    await expect(socialLink).toBeVisible();
+
+    await expect(socialLink).toHaveAttribute("href", /^https:\/\//);
+
+    await expect(socialLink).toHaveAttribute("target", "_blank");
+
+    await expect(socialLink).toHaveAttribute("rel", /noopener noreferrer/);
+  }
 });
 
 test("04 - Deve alternar entre claro e escuro", async ({ page }) => {
