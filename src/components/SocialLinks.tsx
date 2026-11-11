@@ -16,7 +16,7 @@ const socialNetworks: SocialNetwork[] = [
   },
   {
     name: "Instagram",
-    url: "https://www.instagram.com/",
+    url: "https://www.instagram.com/wanessagss_",
     Icon: FaInstagram,
   },
   {
@@ -26,7 +26,7 @@ const socialNetworks: SocialNetwork[] = [
   },
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/",
+    url: "https://www.linkedin.com/Wanessa-Goncalves",
     Icon: FaLinkedin,
   },
 ];
