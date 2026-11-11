@@ -233,6 +233,14 @@ Testes Playwright planejados:
 - Responsividade
 - Navegação por teclado
 
+### Correção da configuração Playwright
+
+- Removida a dependência de `process.env.CI` na configuração local.
+- Mantidos os testes Chromium desktop e mobile.
+- Configurado `forbidOnly: false` e `retries: 0`.
+- Mantida a geração de relatórios HTML.
+- Execução dos testes pendente de validação.
+
 ## 10. Próximas etapas
 
 1. Validar os links externos.
